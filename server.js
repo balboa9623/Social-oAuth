@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 let gitHubRouter = require('./routes/api/gitHub.router')
-const cors = require("cors")
+const cors = require("cors");
+const { admin } = require('./controller/gitHub.controller');
 
 // middleware
 app.use(cors());
@@ -13,6 +14,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/github', gitHubRouter);
+
+// app.get('/admin')
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log("listening on port http://localhost:" + PORT+"/") )
